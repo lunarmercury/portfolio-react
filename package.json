@@ -1,7 +1,7 @@
 {
   "name": "react-portfolio",
   "version": "1.0.0",
-  "homepage": "https://lunarmercury.github.io/react-portfolio",
+  "homepage": "https://lunarmercury.github.io/portfolio-react",
   "main": "index.js",
   "scripts": {
     "start": "expo start",
@@ -18,8 +18,8 @@
     "bootstrap": "^5.3.8",
     "expo": "~54.0.33",
     "expo-status-bar": "~3.0.9",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
     "react-native": "0.81.5",
     "react-native-web": "^0.21.0"
   },
