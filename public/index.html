@@ -1,43 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella F. Camilleri | Portfolio</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --soft-pink: #f0a8b9;
+            --light-pink: #ffffff;
+            --blush-pink: #c47992;
+            --mint-green: #d4f1f4;
+            --light-blue: #b8ecc4;
+            --text-dark: #3a3a3a;
+            --shadow: 0 4px 12px rgba(249, 197, 209, 0.3);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-pink);
+        }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        header {
+            background: linear-gradient(135deg, var(--soft-pink), var(--light-blue));
+            color: var(--text-dark);
+            padding: 3rem 0;
+            box-shadow: var(--shadow);
+        }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        .navbar {
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(5px);
+        }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-dark) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            color: var(--text-dark) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--blush-pink) !important;
+        }
+
+        .navbar {
+            background-image:
+            radial-gradient(circle at 25% 25%, var(--light-blue) 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, var(--mint-green) 1px, transparent 1px);
+            background-size: 15px 15px;
+        }
+        
+        .hero-section {
+            padding: 5rem 0;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-primary {
+            background-color: var(--blush-pink);
+            border-color: var(--blush-pink);
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(248, 200, 216, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #f1b3c6;
+            border-color: #f1b3c6;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-secondary {
+            border-color: var(--text-dark);
+            color: var(--text-dark);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--text-dark);
+            color: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--blush-pink);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Polka dot*/
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+            background-color: white;
+            background-image:
+                radial-gradient(circle at 25% 25%, var(--light-blue) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--mint-green) 2px, transparent 2px);
+            background-size: 20px 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(249, 197, 209, 0.4);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--light-blue);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--light-blue);
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-control:focus {
+            border-color: var(--blush-pink);
+            box-shadow: 0 0 0 0.25rem rgba(248, 200, 216, 0.25);
+        }
+
+        footer {
+            background-color: var(--soft-pink);
+            color: var(--text-dark);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 -4px 12px rgba(249, 197, 209, 0.3);
+        }
+
+        .social-links a {
+            color: var(--text-dark) !important;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--blush-pink) !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero-section">
+        <div class="container text-center">
+            <h1>Hello, I'm Izzy!</h1>
+            <p class="lead">A creative UX/UI designer blending development and a touch of magic.</p>
+            <a href="#projects" class="btn btn-primary btn-lg">Explore My Work</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+    <div class="container">
+        <!-- Smaller section title -->
+        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1rem;">About Me</h2>
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="img/IMG_4561.jpeg" alt="Your Photo" class="img-fluid rounded-pill" style="margin-left: -10px; width: 500px; height: 700px; object-fit: cover;">
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Smaller paragraph text -->
+                <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">
+                    Hello! My name is Isabella F. Camilleri. I'm a <strong>creative soul</strong> with a passion for design, development, and all things whimsical. My journey in the world of creativity started <strong>3 years</strong> ago, and every step has been a delightful adventure.
+                </p>
+                <p style="font-size: 1rem; line-height: 1.6;">
+                    When I'm not crafting my websites or designing user experiences, you can find me painting, learning a new sewing craft, or exploring the great outdoors. I believe in the power of <strong>kindness, creativity, and determination</strong> to make the world a better place.
+                </p>
+                <div class="d-flex gap-3 mt-3 flex-wrap">
+                    <a href="./resume.pdf" download="Isabella_Camilleri_Resume.pdf" class="btn btn-primary">Download Resume</a>
+                    <a href="https://github.com/lunarmercury" class="btn btn-outline-secondary">GitHub</a>
+                    <a href="https://www.linkedin.com/in/isabella-camilleri-7b1354406/" class="btn btn-outline-secondary">LinkedIn</a>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/izzy.png411/" class="text-decoration-none"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.pinterest.com/izzybug411/" class="text-decoration-none"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="row">
+                <!-- Project 1 -->
+<div class="col-md-4 mb-4">
+    <div class="card">
+        <img src="img/ladybug whimsy image made by me.jpg" class="card-img-top" alt="Project 1">
+        <div class="card-body">
+            <h5 class="card-title">Simple Quiz App</h5>
+            <p class="card-text">A simple 3 question multiple choice and self scoring quiz app made with react native and javascript.</p>
+            <a href="https://github.com/lunarmercury/quiz-app" class="btn btn-primary" target="_blank">View Project</a>
+        </div>
+    </div>
+</div>
+
+<!-- Project 2 -->
+<div class="col-md-4 mb-4">
+    <div class="card">
+        <img src="img/download.jpg" class="card-img-top" alt="Project 2">
+        <div class="card-body">
+            <h5 class="card-title">Filtered Menu App</h5>
+            <p class="card-text">A menu app, made with react native and javascript, where listed food items can be filtered by name or letter.</p>
+            <a href="https://github.com/lunarmercury/menu-app" class="btn btn-primary" target="_blank">View Project</a>
+        </div>
+    </div>
+</div>
+
+<!-- Project 3 -->
+<div class="col-md-4 mb-4">
+    <div class="card">
+        <img src="img/download (2).jpg" class="card-img-top" alt="Project 3">
+        <div class="card-body">
+            <h5 class="card-title">Portfolio Website</h5>
+            <p class="card-text">This very portfolio website! Built with Bootstrap, it showcases my projects, skills, and contact information in a clean and responsive layout.</p>
+            <a href="https://github.com/lunarmercury/react-portfolio" class="btn btn-primary" target="_blank">View Project</a>
+        </div>
+    </div>
+</div>
+
+                
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">© 2026 Dreamscape. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                form.reset();
+            });
+        }
+    </script>
+</body>
 </html>
