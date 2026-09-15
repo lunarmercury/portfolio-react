@@ -19,13 +19,25 @@
             --text-dark: #3a3a3a;
             --shadow: 0 4px 12px rgba(249, 197, 209, 0.3);
         }
-        
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--light-pink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
+
+        main {
+            flex: 1 0 auto;
+        }
+        
 
         header {
             background: linear-gradient(135deg, var(--soft-pink), var(--light-blue));
